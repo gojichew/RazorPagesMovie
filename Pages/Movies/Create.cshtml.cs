@@ -30,10 +30,16 @@ namespace RazorPagesMovie.Pages.Movies
         {
             var emptyMovie = new Movie();
 
-            if (await TryUpdateModelAsync<Movie>(
+            if (await TryUpdateModelAsync<Movie>
+                (
                 emptyMovie,
-                "Movie",   // Prefix for form value.
-                s => s.Title, s => s.ReleaseDate, s => s.Price, s => s.Genre))
+                "Movie",
+                s => s.Title, 
+                s => s.ReleaseDate, 
+                s => s.Price, 
+                s => s.Genre
+                )
+                )
             {
                 _context.Movie.Add(emptyMovie);
                 await _context.SaveChangesAsync();
